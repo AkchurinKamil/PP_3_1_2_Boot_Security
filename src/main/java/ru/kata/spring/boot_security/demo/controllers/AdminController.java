@@ -5,13 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import ru.kata.spring.boot_security.demo.entity.Role;
 import ru.kata.spring.boot_security.demo.entity.User;
-import ru.kata.spring.boot_security.demo.repositories.RoleRepository;
 import ru.kata.spring.boot_security.demo.services.RoleService;
 import ru.kata.spring.boot_security.demo.services.UserService;
 
-import java.util.List;
+
 
 @Controller
 @RequestMapping("/admin")
@@ -51,9 +49,7 @@ public class AdminController {
         User user = new User();
         ModelAndView mav = new ModelAndView("new");
         mav.addObject("user", user);
-        List<Role> roles = (List<Role>) roleService.getAllRoles();
-        mav.addObject("allRoles", roles);
-
+        mav.addObject("allRoles", roleService.getAllRoles() );
         return mav;
     }
 
@@ -62,11 +58,7 @@ public class AdminController {
         User user = userService.findUserById(id);
         ModelAndView mav = new ModelAndView("edit");
         mav.addObject("user", user);
-
-        List<Role> roles = (List<Role>) roleService.getAllRoles();
-
-        mav.addObject("allRoles", roles);
-
+        mav.addObject("allRoles", roleService.getAllRoles() );
         return mav;
     }
 
