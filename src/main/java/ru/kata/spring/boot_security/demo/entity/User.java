@@ -2,6 +2,7 @@ package ru.kata.spring.boot_security.demo.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
@@ -39,10 +40,12 @@ public class User implements UserDetails {
         this.age = age;
         this.password = password;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
     }
+
     @Override
     public String getPassword() {
         return this.password;
@@ -52,18 +55,22 @@ public class User implements UserDetails {
     public String getUsername() {
         return this.name;
     }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
+
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
+
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
     @Override
     public boolean isEnabled() {
         return true;
@@ -77,9 +84,10 @@ public class User implements UserDetails {
         return roles;
     }
 
-    public void setRoles(List <Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+
     public Long getId() {
         return id;
     }
